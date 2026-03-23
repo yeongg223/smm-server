@@ -1,0 +1,18 @@
+model Site {
+    id        Int      @id @db.Int @default(autoincrement())
+    siteKey    String   @unique
+    siteApiKey   String   @db.VarChar(255)
+
+    isRoot    Boolean  @default(false)
+    parentSiteId Int?  @db.Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+
+    parentSite   Site?    @relation("SiteToParent", fields: [parentSiteId], references: [id])
+    childSites   Site[]   @relation("SiteToParent")
+    admins     Admin[]
+
+    @@index([parentSiteId])
+}
