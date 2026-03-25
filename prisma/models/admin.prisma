@@ -4,13 +4,11 @@ model Admin {
     path      String   @db.VarChar(255)
     password  String   @db.VarChar(255)
     isRoot    Boolean  @default(false)
-    siteId    Int?     @db.Int
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     
-    site     Site?   @relation(fields: [siteId], references: [id])
+    sites     Site[]
 
-    @@index([siteId])
     @@index([path])
 }

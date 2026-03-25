@@ -12,4 +12,8 @@ export const env = cleanEnv(process.env, {
   DATABASE_PORT: num(),
   DATABASE_NAME: str(),
   CONNECTION_LIMIT: num(),
+  JWT_SECRET: str(),
+  AWS_ACCESS_KEY: str(),
+  AWS_SECRET_KEY: str(),
+  AWS_S3_BUCKET: str(),
 });
